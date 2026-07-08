@@ -110,12 +110,15 @@ def game():
         
         generate_board(board=game_board, ref_board=reference_board)
         print(EMPTY_ROW)
-        #print(f"{' ' * HALF_WIDTH}*", end=' ')
-        while ((token := input(f"{' '*HALF_WIDTH}*{token_str.center(BORDER_WIDTH-2)}*\n{EMPTY_ROW}\n{' '*HALF_WIDTH}{BORDER}\r\033[2A\033[53C").upper()) not in ('X', 'O', 'Q')):
+        print(f"{' ' * HALF_WIDTH}*", end='')
+        #while ((token := input(f"{' '*HALF_WIDTH}*{token_str.center(BORDER_WIDTH-2)}*\n{EMPTY_ROW}\n{' '*HALF_WIDTH}{BORDER}\r\033[2A\033[53C").upper()) not in ('X', 'O', 'Q')):
+        token = input(f"{token_str.center(BORDER_WIDTH-2)}*\n{EMPTY_ROW}\n{EMPTY_ROW}\n{' '*HALF_WIDTH}{BORDER}\r\033[3A\033[53C").upper()
+        while (token not in ('X', 'O', 'Q')):
             err = "Invalid choice, try again"
+            print("\r\033[2A")
             print(f"{' ' * HALF_WIDTH}*", end='')
-            print(f"{err.center(BORDER_WIDTH-2)}*")
-        print(EMPTY_ROW)
+            token = input(f"{token_str.center(BORDER_WIDTH-3)}\n{' ' * HALF_WIDTH}*{err.center(BORDER_WIDTH-2)}*\r\033[1A\033[53C").upper()
+        [print(EMPTY_ROW) for _ in range(2)]
         print(BORDER.center(TOTAL_WIDTH))
 
         if (token == 'Q'):
