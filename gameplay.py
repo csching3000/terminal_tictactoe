@@ -25,10 +25,13 @@ def generate_board(board, ref_board):
     b_string = ' ' * HALF_WIDTH + '*'
 
     for row in range(3):
-        print(f"{b_string}{' ' * HALF_WIDTH}", end="")
-        print(*board[row], end="")
-        print(' ' * (HALF_WIDTH+2), end="")
-        print(*ref_board[row], end="")
+        ## -- printing empty board --
+        print(f"{b_string}{' ' * HALF_WIDTH}", end='')
+        print(*board[row], end='')
+
+        ## -- printing reference board --
+        print(' ' * (HALF_WIDTH+2), end='')
+        print(*ref_board[row], end='')
         print(f"{b_string}")
 
     print(EMPTY_ROW)
